@@ -1,6 +1,7 @@
 ~ function () {
-    let duration = 50
-    let myChart = null,
+    let duration = 50,
+        speed = 30,
+        myChart = null,
         option = null
     //地图数据    
     const mapData = [{
@@ -89,6 +90,7 @@
         option.geo3D.viewControl.maxBeta=360
         /* 开启旋转 */
         option.geo3D.viewControl.autoRotate=true
+        option.geo3D.viewControl.autoRotateSpeed=speed
         /* 设置背景颜色 */
         option.geo3D.environment='black'
         /* 设置3d地图颜色 */
@@ -129,9 +131,9 @@
             sum = 0,
             str = ''
         let id = null
-        const arr = ["myChart.setOption(option);", "/* 设置视角中心点 */", "/* 设置最大选择角度 */",
-            "/* 开启旋转 */", "/* 设置背景颜色 */","/* 设置3d地图颜色 */",
-            "/* 设置光照 */","/* 添加3d柱图 */","/* 添加3d柱图标签 */",
+        const arr = ["myChart.setOption(option,true);", "/* 设置视角中心点 */", "/* 设置最大选择角度 */",
+            "/* 开启旋转 */", "/* 设置背景颜色 */", "/* 设置3d地图颜色 */",
+            "/* 设置光照 */", "/* 添加3d柱图 */", "/* 添加3d柱图标签 */",
             "/* 开始3d柱图光照渲染 */"
         ]
         id = setTimeout(function run() {
@@ -143,6 +145,7 @@
             } else {
                 fn && fn.call()
                 eval(code.substring(m) + '\n' + arr[0])
+                console.log(option.geo3D.viewControl.autoRotate);
             }
             if (code.substring(0, n).indexOf(arr[sum]) !== -1) {
                 str = code.substring(m, n)
@@ -150,7 +153,7 @@
                 sum > 0 ? eval(str + '\n' + arr[0]) : eval(str)
                 sum++;
             }
-            
+
         }, duration)
         // eval(code)
     }
@@ -164,15 +167,25 @@
             .siblings('.active').removeClass('active')
         switch (speed) {
             case 'slow':
-                duration = 100
+                duration = 130
+                speed = 6
                 break
             case 'normal':
-                duration = 50
+                duration = 80
+                speed = 10
                 break
             case 'fast':
-                duration = 10
+                duration = 40
+                speed = 14
                 break
         }
+        if (option) {
+            option.geo3D.viewControl.autoRotateSpeed = speed
+            myChart.setOption(option)
+        }
     })
+
+    // var round = myChart.getOption();
+    // if(round.)
 
 }.call()
