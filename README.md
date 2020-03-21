@@ -12,7 +12,7 @@ echarts、echarts-gl、prism、 echarts地图数据：guangdong.js
 ```
 
 ## 截图
-![Image text](https://github.com/Bittersweet-Chocolate/draw3dEcharts/blob/master/echart.png)
+![Image text](https://github.com/Bittersweet-Chocolate/draw3dEcharts/blob/master/echarts.png)
 
 ## 伤心之处
 第二次写了，第一次被莫名的删除了
