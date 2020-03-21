@@ -165,10 +165,27 @@
     }
 
     writeCode('', code)
-   
-    
-    $('.actions').on('click', 'button', function (e) {
-        let $button = $(e.currentTarget)
+
+    var myLink = document.getElementsByClassName('actions')[0];
+    myLink.addEventListener('click', throttle(changeSpeed, 100));
+    //节流
+    function throttle(fn, delay) {
+        var timer = null
+            // clickT = false
+        return function () {
+            // if (clickT) return
+            var args = arguments
+            clearTimeout(timer)
+            // clickT = true
+            timer = setTimeout(_ => {
+                fn.apply(this, args)
+                // clickT = false
+            }, delay)
+
+        }
+    }
+    function changeSpeed(e){
+        let $button = $(e.target)
         let speed = $button.attr('data-speed')
         $button.addClass('active')
             .siblings('.active').removeClass('active')
@@ -184,7 +201,7 @@
                 barspeed = 3000
                 break
             case 'fast':
-                duration = 10
+                duration = 6
                 espeed = 20
                 barspeed = 2000
                 break
@@ -193,7 +210,8 @@
             option.geo3D.viewControl.autoRotateSpeed = espeed
             myChart.setOption(option, true)
         }
-    })
-
+    }
+    
 
 }.call()
+
