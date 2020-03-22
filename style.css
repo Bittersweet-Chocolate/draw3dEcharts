@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   transition: all 0.5s;
+  text-decoration:none;
 }
 
 *::after {
@@ -75,4 +76,30 @@
 
 .actions>button:focus {
   outline: none;
+}
+
+.showUrl {
+  position: absolute;
+  right: 32px;
+  top: 45%;
+  color: #666
+}
+.showUrl a:link{
+  color: #da3b5e
+}
+.showUrl a:visited{
+  color: #da3b5e
+}
+.showUrl a:hover{
+  color: red
+}
+
+.delay-1{
+  animation-delay: 0.1s;
+}
+.delay-2{
+  animation-delay: 0.2s;
+}
+.delay-3{
+  animation-delay: 0.3s;
 }
