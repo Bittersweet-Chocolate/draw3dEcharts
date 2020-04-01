@@ -1,3 +1,4 @@
+import ('../css/style.css');
 ~ function () {
     var duration = 50,
         espeed = 10,
